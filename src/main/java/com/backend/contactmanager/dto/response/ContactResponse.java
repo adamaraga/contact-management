@@ -1,13 +1,15 @@
 package com.backend.contactmanager.dto.response;
 
+import java.util.UUID;
+
 public class ContactResponse {
-    private Long id;
+    private UUID id;
     private String name;
     private String email;
     private String phone;
 
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -23,7 +25,7 @@ public class ContactResponse {
         return phone;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

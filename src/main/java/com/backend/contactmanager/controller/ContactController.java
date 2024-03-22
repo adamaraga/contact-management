@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/contact")
@@ -24,7 +25,7 @@ public class ContactController {
     }
 
     @GetMapping("/{id}")
-    public Optional<ContactEntity> findContactById(@PathVariable("id") Long id) {
+    public Optional<ContactEntity> findContactById(@PathVariable("id") UUID id) {
         return contactService.findById(id);
     }
 
@@ -39,7 +40,7 @@ public class ContactController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteContact(@PathVariable("id") Long id) {
+    public void deleteContact(@PathVariable("id") UUID id) {
         contactService.deleteContact(id);
     }
 
@@ -51,7 +52,7 @@ public class ContactController {
     }
 
     @PutMapping("/res/{id}")
-    public ContactResponse updateEmpResponse(@RequestBody ContactRequest contactRequest, @PathVariable("id") Long id) {
+    public ContactResponse updateEmpResponse(@RequestBody ContactRequest contactRequest, @PathVariable("id") UUID id) {
         return contactService.updateContact(contactRequest, id);
     }
 }

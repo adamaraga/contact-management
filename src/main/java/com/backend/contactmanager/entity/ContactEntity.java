@@ -3,41 +3,42 @@ package com.backend.contactmanager.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "contact")
 public class ContactEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private Long id;
+    private UUID id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false, unique = true)
     private String phone;
 
 
     public ContactEntity() {
     }
 
-    public ContactEntity(Long id, String name, String email, String phone) {
+    public ContactEntity(UUID id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

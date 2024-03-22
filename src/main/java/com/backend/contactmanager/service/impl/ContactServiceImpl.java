@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -26,7 +27,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Optional<ContactEntity> findById(Long id) {
+    public Optional<ContactEntity> findById(UUID id) {
         return contactRepository.findById(id);
     }
 
@@ -43,7 +44,7 @@ public class ContactServiceImpl implements ContactService {
 
 
     @Override
-    public void deleteContact(Long id) {
+    public void deleteContact(UUID id) {
         contactRepository.deleteById(id);
     }
 
@@ -57,7 +58,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public ContactResponse updateContact(ContactRequest contactRequest, Long id) {
+    public ContactResponse updateContact(ContactRequest contactRequest, UUID id) {
 
         Optional<ContactEntity> checkExistingContact = findById(id);
         if (! checkExistingContact.isPresent())
